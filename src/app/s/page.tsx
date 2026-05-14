@@ -62,37 +62,38 @@ export default function ViewPage() {
     <div className="flex-1 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col max-w-4xl w-full mx-auto px-4 py-8">
+      <main className="flex-1 flex flex-col max-w-3xl w-full mx-auto px-5 py-6">
         {state.phase === "loading" && (
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-fg-muted text-sm">復号中...</span>
+            <span className="text-fg-muted text-[13px]">Decrypting...</span>
           </div>
         )}
 
         {state.phase === "password" && (
           <div className="flex-1 flex items-center justify-center">
-            <div className="bg-bg-surface border border-border rounded-xl p-6 w-full max-w-sm space-y-4">
-              <h2 className="text-fg text-sm font-bold">
-                このリンクはパスワードで保護されています
-              </h2>
-              {error && (
-                <p className="text-accent text-xs">{error}</p>
-              )}
+            <div className="border border-border rounded-lg p-5 w-full max-w-xs space-y-4">
+              <p className="text-fg text-[13px] font-medium">
+                パスワードで保護されています
+              </p>
+              {error && <p className="text-accent text-[12px]">{error}</p>}
               <input
                 type="password"
                 value={password}
-                onChange={(e) => { setPassword(e.target.value); setError(""); }}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError("");
+                }}
                 onKeyDown={(e) => e.key === "Enter" && submitPassword()}
                 placeholder="パスワード"
                 maxLength={256}
                 autoFocus
-                className="w-full px-3 py-2 bg-bg-input text-fg text-sm rounded-lg border border-border focus:border-border-focus focus:outline-none font-mono"
+                className="w-full px-3 py-1.5 bg-bg-input text-fg text-[13px] rounded border border-border focus:border-border-focus focus:outline-none font-mono"
               />
               <button
                 onClick={submitPassword}
-                className="w-full px-4 py-2 bg-accent text-white rounded-lg text-sm hover:bg-accent-hover transition-colors"
+                className="w-full px-4 py-1.5 bg-fg text-bg rounded text-[12px] font-medium hover:opacity-80 transition-opacity"
               >
-                復号する
+                復号
               </button>
             </div>
           </div>
@@ -101,26 +102,26 @@ export default function ViewPage() {
         {state.phase === "done" && (
           <div className="flex-1 flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-fg-muted text-xs">
-                {state.text.length} 文字
+              <span className="text-fg-muted/50 text-[11px] font-mono">
+                {state.text.length}
               </span>
               <div className="flex gap-2">
                 <button
                   onClick={copy}
-                  className="px-3 py-1.5 text-xs border border-border rounded-md text-fg-muted hover:text-fg hover:border-fg-muted/50 transition-colors"
+                  className="px-3 py-1 text-[11px] border border-border rounded text-fg-muted hover:text-fg hover:border-border-focus transition-colors"
                 >
-                  {copied ? "コピーした ✓" : "コピー"}
+                  {copied ? "Copied" : "Copy"}
                 </button>
                 <a
                   href="/"
-                  className="px-3 py-1.5 text-xs border border-border rounded-md text-fg-muted hover:text-fg hover:border-fg-muted/50 transition-colors"
+                  className="px-3 py-1 text-[11px] border border-border rounded text-fg-muted hover:text-fg hover:border-border-focus transition-colors"
                 >
-                  新規作成
+                  New
                 </a>
               </div>
             </div>
 
-            <pre className="flex-1 bg-bg-input p-4 rounded-lg border border-border text-sm leading-relaxed font-mono whitespace-pre-wrap break-words overflow-auto">
+            <pre className="flex-1 bg-bg-input p-4 rounded border border-border text-[13px] leading-[1.8] font-mono whitespace-pre-wrap break-words overflow-auto">
               {state.text}
             </pre>
           </div>
@@ -128,11 +129,11 @@ export default function ViewPage() {
 
         {state.phase === "error" && (
           <div className="flex-1 flex items-center justify-center">
-            <div className="text-center space-y-4">
-              <p className="text-accent text-sm">{state.message}</p>
+            <div className="text-center space-y-3">
+              <p className="text-fg-muted text-[13px]">{state.message}</p>
               <a
                 href="/"
-                className="inline-block px-4 py-2 text-xs border border-border rounded-md text-fg-muted hover:text-fg transition-colors"
+                className="inline-block px-3 py-1 text-[11px] border border-border rounded text-fg-muted hover:text-fg transition-colors"
               >
                 トップに戻る
               </a>

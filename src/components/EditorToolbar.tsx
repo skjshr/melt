@@ -12,17 +12,16 @@ export function EditorToolbar({
   onPasswordChange,
 }: Props) {
   return (
-    <div className="flex items-center gap-3 flex-wrap">
+    <div className="flex items-center gap-3">
       <button
         onClick={onTogglePassword}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-colors border ${
+        className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[12px] transition-colors border ${
           usePassword
-            ? "border-accent text-accent bg-accent/10"
-            : "border-border text-fg-muted hover:border-fg-muted/50"
+            ? "border-accent/60 text-accent"
+            : "border-border text-fg-muted hover:text-fg hover:border-border-focus"
         }`}
       >
-        <span>{usePassword ? "🔒" : "🔓"}</span>
-        パスワード
+        {usePassword ? "鍵あり" : "鍵なし"}
       </button>
 
       {usePassword && (
@@ -30,10 +29,10 @@ export function EditorToolbar({
           type="password"
           value={password}
           onChange={(e) => onPasswordChange(e.target.value)}
-          placeholder="パスワードを入力"
+          placeholder="パスワード"
           maxLength={256}
           aria-label="暗号化パスワード"
-          className="px-3 py-1.5 bg-bg-input text-fg text-xs rounded-md border border-border focus:border-border-focus focus:outline-none font-mono w-48"
+          className="px-2.5 py-1 bg-bg-input text-fg text-[12px] rounded border border-border focus:border-border-focus focus:outline-none font-mono w-44"
         />
       )}
     </div>

@@ -54,8 +54,8 @@ export default function Home() {
     <div className="flex-1 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col max-w-4xl w-full mx-auto px-4 pb-8">
-        <div className="flex-1 flex flex-col gap-3 mt-4">
+      <main className="flex-1 flex flex-col max-w-3xl w-full mx-auto px-5 pb-6">
+        <div className="flex-1 flex flex-col gap-3 mt-5">
           <EditorToolbar
             usePassword={usePassword}
             onTogglePassword={() => setUsePassword((v) => !v)}
@@ -69,10 +69,10 @@ export default function Home() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="テキストを貼り付ける&#10;&#10;入力内容はブラウザ内で暗号化され、URLに直接埋め込まれる。&#10;サーバーには送信されない。"
+              placeholder={"ここにテキストを入力\n\nブラウザ内で暗号化され、URLに埋め込まれます"}
               spellCheck={false}
               autoFocus
-              className="w-full h-full min-h-[400px] resize-none bg-bg-input text-fg p-4 rounded-lg border border-border focus:border-border-focus focus:outline-none text-sm leading-relaxed font-mono placeholder:text-fg-muted/30"
+              className="w-full h-full min-h-[420px] resize-none bg-bg-input text-fg p-4 rounded-md border border-border focus:border-border-focus focus:outline-none text-[13px] leading-[1.8] font-mono placeholder:text-fg-muted/20 transition-colors"
             />
           </div>
 
@@ -81,22 +81,23 @@ export default function Home() {
               <button
                 onClick={generate}
                 disabled={!text.trim() || generating || overLimit}
-                className="px-6 py-2.5 bg-accent text-white rounded-lg font-mono text-sm hover:bg-accent-hover disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="px-5 py-1.5 bg-fg text-bg rounded-md text-[12px] font-medium hover:opacity-85 disabled:opacity-15 disabled:cursor-not-allowed transition-opacity"
               >
-                {generating ? "生成中..." : "URLを生成"}
+                {generating ? "..." : "Share"}
               </button>
 
-              <span className={`text-xs ${overLimit ? "text-accent" : "text-fg-muted"}`}>
-                {text.length > 0 && (
-                  overLimit
-                    ? `${(inputBytes / 1024).toFixed(1)}KB / 32KB 上限超過`
-                    : `${text.length} 文字`
-                )}
+              <span
+                className={`text-[11px] ${overLimit ? "text-accent" : "text-fg-muted/50"}`}
+              >
+                {text.length > 0 &&
+                  (overLimit
+                    ? `${(inputBytes / 1024).toFixed(1)}KB / 32KB`
+                    : `${text.length}`)}
               </span>
             </div>
 
-            <span className="text-fg-muted/40 text-xs hidden sm:inline">
-              Ctrl + Enter
+            <span className="text-fg-muted/30 text-[11px] hidden sm:inline font-mono">
+              Ctrl+Enter
             </span>
           </div>
         </div>
@@ -106,8 +107,8 @@ export default function Home() {
         <ResultOverlay url={result} urlLength={urlLength} onClose={reset} />
       )}
 
-      <footer className="text-center text-fg-muted/40 text-xs py-4">
-        暗号化はブラウザ内で完結する。サーバーには何も送信されない。
+      <footer className="text-center text-fg-muted/30 text-[11px] py-4">
+        E2E encrypted. Nothing is sent to the server.
       </footer>
     </div>
   );

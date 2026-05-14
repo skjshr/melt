@@ -9,50 +9,47 @@ export function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between px-4 py-3 border-b border-border/50">
-        <a href="/" className="flex items-center gap-2">
-          <span className="text-accent text-lg font-bold tracking-tight">
+      <header className="flex items-center justify-between px-5 h-12 border-b border-border/40">
+        <a href="/" className="flex items-baseline gap-2.5">
+          <span className="text-fg text-[15px] font-semibold tracking-[0.08em] lowercase">
             melt
           </span>
-          <span className="text-fg-muted text-xs hidden sm:inline">
-            テキスト共有
+          <span className="text-fg-muted/50 text-[10px] tracking-wide hidden sm:inline">
+            zero-knowledge text sharing
           </span>
         </a>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <button
             onClick={() => setShowInfo((v) => !v)}
-            className="text-fg-muted text-xs hover:text-fg transition-colors px-2 py-1 rounded-md hover:bg-border/30"
+            className="text-fg-muted text-[11px] hover:text-fg transition-colors px-2 py-1 rounded hover:bg-border/20"
           >
-            仕組み
+            {showInfo ? "閉じる" : "仕組み"}
           </button>
           <button
             onClick={toggle}
-            className="text-fg-muted hover:text-fg transition-colors text-sm w-8 h-8 flex items-center justify-center rounded-md hover:bg-border/30"
+            className="text-fg-muted hover:text-fg transition-colors text-xs w-7 h-7 flex items-center justify-center rounded hover:bg-border/20"
             aria-label="テーマ切り替え"
           >
-            {theme === "dark" ? "☀" : "☽"}
+            {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>
       </header>
 
       {showInfo && (
-        <div className="bg-bg-surface border-b border-border/50 px-4 py-3 text-xs text-fg-muted leading-relaxed max-w-4xl mx-auto w-full">
+        <div className="border-b border-border/40 px-5 py-4 text-[12px] text-fg-muted leading-[1.7] max-w-3xl mx-auto w-full">
           <p>
-            入力されたテキストはブラウザ内で<strong className="text-fg">AES-256-GCM</strong>で
-            暗号化・圧縮され、URLの<code className="text-accent">#</code>
-            以降に埋め込まれる。フラグメント（#以降）はサーバーに送信されないため、
-            サーバー側にデータは一切残らない。
+            テキストはブラウザ内で
+            <strong className="text-fg font-medium">AES-256-GCM</strong>
+            で暗号化・圧縮され、URLの
+            <code className="text-fg font-mono text-[11px]">#</code>
+            以降に埋め込まれます。フラグメントはサーバーに送信されません。
           </p>
-          <p className="mt-1.5">
-            パスワードを設定すると、鍵はPBKDF2で導出される。URLだけでは復号できなくなる。
+          <p className="mt-2">
+            パスワードを設定すると鍵は
+            <strong className="text-fg font-medium">PBKDF2</strong>
+            で導出されます。URLだけでは復号できません。
           </p>
-          <button
-            onClick={() => setShowInfo(false)}
-            className="mt-2 text-accent hover:text-accent-hover transition-colors"
-          >
-            閉じる
-          </button>
         </div>
       )}
     </>

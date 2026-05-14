@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #1a1a2e;
-  --bg-surface: #16213e;
-  --bg-input: #0f1629;
-  --fg: #e2e8f0;
-  --fg-muted: #94a3b8;
-  --accent: #e94560;
-  --accent-hover: #ff6b81;
-  --border: #2a2a4a;
-  --border-focus: #5b6abf;
-  --success: #4ade80;
-  --warning: #fbbf24;
+  --bg: #0a0a0a;
+  --bg-surface: #141414;
+  --bg-input: #171717;
+  --fg: #ededed;
+  --fg-muted: #6e6e6e;
+  --accent: #c4841d;
+  --accent-hover: #dea03e;
+  --border: #262626;
+  --border-focus: #525252;
+  --success: #3fb950;
+  --warning: #d29922;
 }
 
 .light {
-  --bg: #f8fafc;
+  --bg: #fafafa;
   --bg-surface: #ffffff;
-  --bg-input: #f1f5f9;
-  --fg: #1e293b;
-  --fg-muted: #64748b;
-  --accent: #dc2626;
-  --accent-hover: #ef4444;
-  --border: #e2e8f0;
-  --border-focus: #6366f1;
+  --bg-input: #f4f4f5;
+  --fg: #18181b;
+  --fg-muted: #71717a;
+  --accent: #b45309;
+  --accent-hover: #d97706;
+  --border: #e4e4e7;
+  --border-focus: #a1a1aa;
   --success: #16a34a;
-  --warning: #d97706;
+  --warning: #ca8a04;
 }
 
 @theme inline {
@@ -48,6 +48,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.15s, color 0.15s;
 }
 
 textarea {
@@ -57,4 +58,14 @@ textarea {
 ::selection {
   background: var(--accent);
   color: white;
+}
+
+/* テーマ切替時にボーダーとサーフェスも滑らかに */
+*, *::before, *::after {
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+/* textarea は入力中の色変化を避ける */
+textarea, input {
+  transition: border-color 0.15s;
 }
