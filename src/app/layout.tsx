@@ -13,19 +13,28 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://melt-lac.vercel.app"),
   title: "melt — zero-knowledge text sharing",
   description:
-    "テキストをURLに暗号化して埋め込む。サーバーには何も保存されない。E2E encrypted, nothing stored.",
+    "テキストをURLに暗号化して埋め込む。サーバーには何も保存されない。AES-256-GCM end-to-end encryption, nothing stored on the server.",
+  keywords: [
+    "text sharing", "encrypted", "zero-knowledge", "pastebin",
+    "E2E encryption", "テキスト共有", "暗号化", "サーバーレス",
+  ],
   openGraph: {
-    title: "melt",
-    description: "Zero-knowledge encrypted text sharing. Nothing is stored on the server.",
+    title: "melt — zero-knowledge text sharing",
+    description: "Encrypt text into a URL. Nothing is stored on the server. AES-256-GCM, password protection, zero knowledge.",
     type: "website",
     siteName: "melt",
+    url: "https://melt-lac.vercel.app",
   },
   twitter: {
     card: "summary",
-    title: "melt",
-    description: "Zero-knowledge encrypted text sharing.",
+    title: "melt — zero-knowledge text sharing",
+    description: "Encrypt text into a URL. Nothing stored. AES-256-GCM end-to-end encryption.",
+  },
+  alternates: {
+    canonical: "https://melt-lac.vercel.app",
   },
 };
 
