@@ -72,7 +72,7 @@ export default function Home() {
               placeholder={"ここにテキストを入力\n\nブラウザ内で暗号化され、URLに埋め込まれます"}
               spellCheck={false}
               autoFocus
-              className="w-full h-full min-h-[420px] resize-none bg-bg-input text-fg p-4 rounded-md border border-border focus:border-border-focus focus:outline-none text-[13px] leading-[1.8] font-mono placeholder:text-fg-muted/20 transition-colors"
+              className="w-full h-full min-h-[420px] resize-none bg-bg-input text-fg p-4 rounded-md border border-border focus:border-border-focus focus:outline-none text-[13px] leading-[1.8] font-mono placeholder:text-fg-muted/30 transition-colors"
             />
           </div>
 

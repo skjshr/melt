@@ -19,13 +19,13 @@
   --bg-surface: #ffffff;
   --bg-input: #f4f4f5;
   --fg: #18181b;
-  --fg-muted: #71717a;
-  --accent: #b45309;
-  --accent-hover: #d97706;
-  --border: #e4e4e7;
+  --fg-muted: #52525b;
+  --accent: #92400e;
+  --accent-hover: #b45309;
+  --border: #d4d4d8;
   --border-focus: #a1a1aa;
-  --success: #16a34a;
-  --warning: #ca8a04;
+  --success: #15803d;
+  --warning: #a16207;
 }
 
 @theme inline {
