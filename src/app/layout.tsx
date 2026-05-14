@@ -13,13 +13,19 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "melt — テキスト共有、サーバー保存なし",
+  title: "melt — zero-knowledge text sharing",
   description:
-    "テキストやコードをURLに変換。サーバーには何も保存されない。パスワード保護対応。",
+    "テキストをURLに暗号化して埋め込む。サーバーには何も保存されない。E2E encrypted, nothing stored.",
   openGraph: {
     title: "melt",
-    description: "テキスト共有、サーバー保存なし",
+    description: "Zero-knowledge encrypted text sharing. Nothing is stored on the server.",
     type: "website",
+    siteName: "melt",
+  },
+  twitter: {
+    card: "summary",
+    title: "melt",
+    description: "Zero-knowledge encrypted text sharing.",
   },
 };
 
